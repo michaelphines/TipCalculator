@@ -49,8 +49,8 @@
 - (void)viewWillAppear:(BOOL)animated {
     if ([self defaultTipChanged]) {
         [self loadDefaultTip];
-        [self updateValues];
     }
+    [self updateValues];
 }
 
 - (void)initializeDefaults {
@@ -80,13 +80,27 @@
     return [tipPercent floatValue];
 }
 
+- (NSString *)formatNumber: (NSNumber *)number {
+    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    [formatter setNumberStyle:NSNumberFormatterCurrencyStyle];
+    [formatter setLocale:[NSLocale currentLocale]];
+    return [formatter stringFromNumber:number];
+}
+
+- (NSNumber *)parseNumber: (NSString *)number {
+    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
+    [formatter setLocale:[NSLocale currentLocale]];
+    return [formatter numberFromString:number];
+}
+
 - (void)updateValues {
-    float billAmount = [self.BillAmountTextField.text floatValue];
+    float billAmount = [[self parseNumber:self.BillAmountTextField.text] floatValue];
     float tipAmount = [self currentTipPercent] * billAmount;
     float totalAmount = billAmount + tipAmount;
     
-    self.TipAmountLabel.text = [NSString stringWithFormat:@"$%0.2f", tipAmount];
-    self.TotalLabel.text = [NSString stringWithFormat:@"$%0.2f", totalAmount];
+    self.TipAmountLabel.text = [self formatNumber: @(tipAmount)];
+    self.TotalLabel.text = [self formatNumber: @(totalAmount)];
 }
 
 - (IBAction)editingChanged:(UITextField *)sender {
