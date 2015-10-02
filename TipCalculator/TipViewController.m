@@ -23,6 +23,9 @@
     [super viewDidLoad];
     self.title = @"Tip Calculator";
     [self initializeDefaults];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
     [self loadDefaultTip];
     [self updateValues];
 }
