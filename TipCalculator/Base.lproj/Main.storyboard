@@ -54,7 +54,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="0" id="sCt-SG-gnG">
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="1" id="sCt-SG-gnG">
                                 <rect key="frame" x="68" y="183" width="185" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
@@ -80,7 +80,13 @@
                             <outletCollection property="gestureRecognizers" destination="Dn2-xf-s2u" appends="YES" id="dy9-x8-35S"/>
                         </connections>
                     </view>
-                    <navigationItem key="navigationItem" id="pSs-Zn-cdf"/>
+                    <navigationItem key="navigationItem" id="pSs-Zn-cdf">
+                        <barButtonItem key="rightBarButtonItem" title="Settings" id="ior-4z-lKq">
+                            <connections>
+                                <action selector="onSettingsTap:" destination="BYZ-38-t0r" id="C9S-V7-ncx"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="BillAmountTextField" destination="jSS-wK-HQ0" id="T8h-fe-T57"/>
                         <outlet property="TipAmountLabel" destination="MM9-Zv-l4k" id="FJl-rI-Lvw"/>

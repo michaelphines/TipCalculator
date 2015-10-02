@@ -13,6 +13,8 @@
 		C489216D1BBDFA6F00314D6C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C489216B1BBDFA6F00314D6C /* Main.storyboard */; };
 		C489216F1BBDFA6F00314D6C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C489216E1BBDFA6F00314D6C /* Assets.xcassets */; };
 		C48921721BBDFA6F00314D6C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C48921701BBDFA6F00314D6C /* LaunchScreen.storyboard */; };
+		C489217E1BBE07D300314D6C /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C489217C1BBE07D300314D6C /* SettingsViewController.m */; settings = {ASSET_TAGS = (); }; };
+		C489217F1BBE07D300314D6C /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C489217D1BBE07D300314D6C /* SettingsViewController.xib */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,9 @@
 		C489216E1BBDFA6F00314D6C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C48921711BBDFA6F00314D6C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C48921731BBDFA6F00314D6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C489217C1BBE07D300314D6C /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsViewController.m; path = ../SettingsViewController.m; sourceTree = "<group>"; };
+		C489217D1BBE07D300314D6C /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SettingsViewController.xib; path = ../SettingsViewController.xib; sourceTree = "<group>"; };
+		C48921801BBE08E000314D6C /* SettingsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +63,9 @@
 		C48921611BBDFA6F00314D6C /* TipCalculator */ = {
 			isa = PBXGroup;
 			children = (
+				C489217C1BBE07D300314D6C /* SettingsViewController.m */,
+				C48921801BBE08E000314D6C /* SettingsViewController.h */,
+				C489217D1BBE07D300314D6C /* SettingsViewController.xib */,
 				C48921651BBDFA6F00314D6C /* AppDelegate.h */,
 				C48921661BBDFA6F00314D6C /* AppDelegate.m */,
 				C48921681BBDFA6F00314D6C /* TipViewController.h */,
@@ -139,6 +147,7 @@
 				C48921721BBDFA6F00314D6C /* LaunchScreen.storyboard in Resources */,
 				C489216F1BBDFA6F00314D6C /* Assets.xcassets in Resources */,
 				C489216D1BBDFA6F00314D6C /* Main.storyboard in Resources */,
+				C489217F1BBE07D300314D6C /* SettingsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,6 +161,7 @@
 				C489216A1BBDFA6F00314D6C /* TipViewController.m in Sources */,
 				C48921671BBDFA6F00314D6C /* AppDelegate.m in Sources */,
 				C48921641BBDFA6F00314D6C /* main.m in Sources */,
+				C489217E1BBE07D300314D6C /* SettingsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -300,6 +310,7 @@
 				C48921781BBDFA6F00314D6C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
