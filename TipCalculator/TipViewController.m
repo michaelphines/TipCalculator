@@ -23,6 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"Tip Calculator";
+    [self.BillAmountTextField becomeFirstResponder];
     [self initializeDefaults];
     [self storeOldDefaultTip];
     [self loadDefaultTip];
@@ -86,10 +87,6 @@
     
     self.TipAmountLabel.text = [NSString stringWithFormat:@"$%0.2f", tipAmount];
     self.TotalLabel.text = [NSString stringWithFormat:@"$%0.2f", totalAmount];
-}
-
-- (IBAction)viewTapped:(UITapGestureRecognizer *)sender {
-    [self updateValues];
 }
 
 - (IBAction)editingChanged:(UITextField *)sender {
