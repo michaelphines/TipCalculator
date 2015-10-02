@@ -1,0 +1,28 @@
+Open app
+enter 1000
+change tip to 15
+change tip to 25
+change tip to 20
+open settings
+change default tip to 15
+close settings
+change tip to 25
+open settings
+close settings
+open IOS settings
+change to france
+open tip calc
+[enter 1000]
+open IOS settings
+change to italy
+open tip calc
+[enter 1000]
+close app
+open app
+close app
+open Mac settings from dock
+change time
+click save
+open simulator from dock
+open tip calc
+delete bill
