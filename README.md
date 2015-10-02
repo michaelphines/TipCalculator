@@ -4,7 +4,7 @@ TipCalculator is a tip calculator application for iOS.
 
 Submitted by: Michael Hines
 
-Time spent: 55 min spent in total
+Time spent: 1:05 spent in total
 
 ## User Stories
 
@@ -21,7 +21,7 @@ The following **optional** features are implemented:
 
 The following **additional** features are implemented:
 
-* [ ] List anything else that you can get done to improve the app functionality!
+* [X] Only change the tip percentage if the settings have changed
 
 ## Video Walkthrough
 
@@ -33,10 +33,11 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Changelog
 
-| Time Spent | Description                            |
-|-----------:|----------------------------------------|
-|     25 min | Create basic tip calculator            |
-|     30 min | Create settings with default tip value |
+| Time Spent | Description                                            |
+|-----------:|--------------------------------------------------------|
+|     25 min | Create basic tip calculator                            |
+|     30 min | Create settings with default tip value                 |
+|     10 min | Only change the tip to match default tip if it changes |
 
 ## Notes
 

@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *TipAmountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *TotalLabel;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *TipPercentControl;
+@property int oldDefaultTip;
 
 @end
 
@@ -23,11 +24,32 @@
     [super viewDidLoad];
     self.title = @"Tip Calculator";
     [self initializeDefaults];
+    [self storeOldDefaultTip];
+    [self loadDefaultTip];
+}
+
+- (long)defaultTip {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    return [defaults integerForKey: @"default_tip_percent_index"];
+}
+
+- (void)storeOldDefaultTip {
+    self.oldDefaultTip = [self defaultTip];
+}
+
+- (BOOL)defaultTipChanged {
+    return self.oldDefaultTip != [self defaultTip];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [self storeOldDefaultTip];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    [self loadDefaultTip];
-    [self updateValues];
+    if ([self defaultTipChanged]) {
+        [self loadDefaultTip];
+        [self updateValues];
+    }
 }
 
 - (void)initializeDefaults {
@@ -39,10 +61,7 @@
 }
 
 - (void)loadDefaultTip {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    long defaultTipPercentIndex = [defaults integerForKey:@"default_tip_percent_index"];
-    
-    self.TipPercentControl.selectedSegmentIndex = defaultTipPercentIndex;
+    self.TipPercentControl.selectedSegmentIndex = [self defaultTip];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -20,7 +20,6 @@
     [super viewDidLoad];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     long defaultTipPercentIndex = [defaults integerForKey:@"default_tip_percent_index"];
-    
     self.defaultTipControl.selectedSegmentIndex = defaultTipPercentIndex;
 }
 
