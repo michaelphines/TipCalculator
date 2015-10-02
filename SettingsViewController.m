@@ -10,7 +10,12 @@
 #import <UIKit/UIKit.h>
 
 @interface SettingsViewController : UIViewController
+@property (strong, nonatomic) IBOutlet UIView *mainView;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *defaultTipControl;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *colorThemeControl;
+@property (weak, nonatomic) IBOutlet UILabel *helpLabel;
+@property (weak, nonatomic) IBOutlet UILabel *defaultTipLabel;
+@property (weak, nonatomic) IBOutlet UILabel *colorThemeLabel;
 
 @end
 
@@ -19,8 +24,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    long defaultTipPercentIndex = [defaults integerForKey:@"default_tip_percent_index"];
-    self.defaultTipControl.selectedSegmentIndex = defaultTipPercentIndex;
+    self.defaultTipControl.selectedSegmentIndex = [defaults integerForKey:@"default_tip_percent_index"];
+    self.colorThemeControl.selectedSegmentIndex = [defaults integerForKey:@"theme"];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [self updateTheme];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -32,6 +41,34 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setInteger:[self.defaultTipControl selectedSegmentIndex] forKey:@"default_tip_percent_index"];
     [defaults synchronize];
+}
+
+- (IBAction)onThemeChange:(id)sender {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setInteger:[self.colorThemeControl selectedSegmentIndex] forKey:@"theme"];
+    [defaults synchronize];
+    [UIView animateWithDuration:0.25 animations:^{
+        [self updateTheme];
+    }];
+}
+
+- (void)updateTheme {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if ([defaults integerForKey:@"theme"] == 0) {
+        [self.mainView setBackgroundColor: [UIColor whiteColor]];
+        [self.helpLabel setTextColor: [UIColor darkTextColor]];
+        [self.defaultTipLabel setTextColor: [UIColor darkTextColor]];
+        [self.colorThemeLabel setTextColor: [UIColor darkTextColor]];
+        [self.colorThemeControl setTintColor: nil];
+        [self.defaultTipControl setTintColor: nil];
+    } else {
+        [self.mainView setBackgroundColor: [UIColor darkGrayColor]];
+        [self.helpLabel setTextColor: [UIColor whiteColor]];
+        [self.defaultTipLabel setTextColor: [UIColor whiteColor]];
+        [self.colorThemeLabel setTextColor: [UIColor whiteColor]];
+        [self.colorThemeControl setTintColor: [UIColor whiteColor]];
+        [self.defaultTipControl setTintColor: [UIColor whiteColor]];
+    }
 }
 
 /*

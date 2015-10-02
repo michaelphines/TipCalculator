@@ -4,7 +4,7 @@ TipCalculator is a tip calculator application for iOS.
 
 Submitted by: Michael Hines
 
-Time spent: 2:05 spent in total
+Time spent: 2:50 spent in total
 
 ## User Stories
 
@@ -14,7 +14,7 @@ The following **required** functionality is complete:
 * [X] Settings page to change the default tip percentage.
 
 The following **optional** features are implemented:
-* [ ] UI animations
+* [X] UI animations
 * [X] Remembering the bill amount across app restarts (if <10mins)
 * [X] Using locale-specific currency and currency thousands separators.
 * [X] Making sure the keyboard is always visible and the bill amount is always the first responder. This way the user doesn't have to tap anywhere to use this app. Just launch the app and start typing.
@@ -22,12 +22,13 @@ The following **optional** features are implemented:
 The following **additional** features are implemented:
 
 * [X] Only change the tip percentage if the settings have changed
+* [X] Add a dark theme
 
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/Eo0SDHd.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='http://i.imgur.com/7gaJLhD.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
@@ -41,6 +42,7 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 |     15 min | Update interface                                       |
 |     10 min | Add localized number formatter                         |
 |     35 min | Save app state for 10 minutes when closed              |
+|     45 min | Add a tasteful dark theme with animation               |
 
 ## Notes
 

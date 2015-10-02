@@ -10,10 +10,11 @@
 #import "SettingsViewController.h"
 
 @interface TipViewController ()
-@property (weak, nonatomic) IBOutlet UITextField *BillAmountTextField;
-@property (weak, nonatomic) IBOutlet UILabel *TipAmountLabel;
-@property (weak, nonatomic) IBOutlet UILabel *TotalLabel;
-@property (weak, nonatomic) IBOutlet UISegmentedControl *TipPercentControl;
+@property (strong, nonatomic) IBOutlet UIView *mainView;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *tipPercentControl;
+@property (weak, nonatomic) IBOutlet UITextField *billAmountTextField;
+@property (weak, nonatomic) IBOutlet UILabel *tipAmountLabel;
+@property (weak, nonatomic) IBOutlet UILabel *totalLabel;
 @property long oldDefaultTip;
 
 @end
@@ -23,7 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"Tip Calculator";
-    [self.BillAmountTextField becomeFirstResponder];
+    [self.billAmountTextField becomeFirstResponder];
     [self initializeDefaults];
     [self storeOldDefaultTip];
     [self loadDefaultTip];
@@ -44,11 +45,30 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationWillTerminateNotification object:nil];
 }
 
+- (void)updateTheme {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if ([defaults integerForKey:@"theme"] == 0) {
+        [self.mainView setBackgroundColor: [UIColor whiteColor]];
+        [self.tipPercentControl setTintColor: nil];
+        [self.billAmountTextField setTextColor: [UIColor darkTextColor]];
+
+        self.billAmountTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:self.billAmountTextField.placeholder attributes:@{NSForegroundColorAttributeName: [UIColor lightGrayColor]}];
+
+    } else {
+        [self.mainView setBackgroundColor: [UIColor darkGrayColor]];
+        [self.tipPercentControl setTintColor: [UIColor blackColor]];
+        [self.billAmountTextField setTextColor: [UIColor whiteColor]];
+
+        self.billAmountTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:self.billAmountTextField.placeholder attributes:@{NSForegroundColorAttributeName: [UIColor lightGrayColor]}];
+
+    }
+}
+
 - (void)saveLastState {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:[NSDate date] forKey:@"last_open_time"];
-    [defaults setObject:self.BillAmountTextField.text forKey:@"last_bill_amount"];
-    [defaults setInteger:self.TipPercentControl.selectedSegmentIndex forKey:@"last_tip_percent_index"];
+    [defaults setObject:self.billAmountTextField.text forKey:@"last_bill_amount"];
+    [defaults setInteger:self.tipPercentControl.selectedSegmentIndex forKey:@"last_tip_percent_index"];
 }
 
 - (BOOL)hasRecentState {
@@ -65,8 +85,8 @@
 - (void)loadLastState {
     if ([self hasRecentState]) {
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        self.BillAmountTextField.text = [defaults stringForKey: @"last_bill_amount"];
-        self.TipPercentControl.selectedSegmentIndex = [defaults integerForKey: @"last_tip_percent_index"];
+        self.billAmountTextField.text = [defaults stringForKey: @"last_bill_amount"];
+        self.tipPercentControl.selectedSegmentIndex = [defaults integerForKey: @"last_tip_percent_index"];
         [self updateValues];
     }
 }
@@ -93,6 +113,7 @@
         [self loadDefaultTip];
     }
     [self updateValues];
+    [self updateTheme];
 }
 
 - (void)initializeDefaults {
@@ -104,7 +125,7 @@
 }
 
 - (void)loadDefaultTip {
-    self.TipPercentControl.selectedSegmentIndex = [self defaultTip];
+    self.tipPercentControl.selectedSegmentIndex = [self defaultTip];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -118,7 +139,7 @@
 
 - (float)currentTipPercent {
     NSArray *tipPercents = @[@(0.15), @(0.2), @(0.25)];
-    NSNumber *tipPercent = tipPercents[self.TipPercentControl.selectedSegmentIndex];
+    NSNumber *tipPercent = tipPercents[self.tipPercentControl.selectedSegmentIndex];
     return [tipPercent floatValue];
 }
 
@@ -137,12 +158,12 @@
 }
 
 - (void)updateValues {
-    float billAmount = [[self parseNumber:self.BillAmountTextField.text] floatValue];
+    float billAmount = [[self parseNumber:self.billAmountTextField.text] floatValue];
     float tipAmount = [self currentTipPercent] * billAmount;
     float totalAmount = billAmount + tipAmount;
     
-    self.TipAmountLabel.text = [self formatNumber: @(tipAmount)];
-    self.TotalLabel.text = [self formatNumber: @(totalAmount)];
+    self.tipAmountLabel.text = [self formatNumber: @(tipAmount)];
+    self.totalLabel.text = [self formatNumber: @(totalAmount)];
 }
 
 - (IBAction)editingChanged:(UITextField *)sender {

@@ -70,9 +70,14 @@
                     </navigationItem>
                     <connections>
                         <outlet property="BillAmountTextField" destination="jSS-wK-HQ0" id="T8h-fe-T57"/>
-                        <outlet property="TipAmountLabel" destination="MM9-Zv-l4k" id="FJl-rI-Lvw"/>
+                        <outlet property="TipAmountLabel" destination="MM9-Zv-l4k" id="7LQ-Tx-T5A"/>
                         <outlet property="TipPercentControl" destination="sCt-SG-gnG" id="dgn-mB-x8l"/>
                         <outlet property="TotalLabel" destination="NM3-PN-G2n" id="rH0-oW-yZv"/>
+                        <outlet property="billAmountTextField" destination="jSS-wK-HQ0" id="pfr-Uc-Lzj"/>
+                        <outlet property="mainView" destination="8bC-Xf-vdC" id="i4t-Af-pTO"/>
+                        <outlet property="tipAmountLabel" destination="MM9-Zv-l4k" id="WU1-Z7-TZ7"/>
+                        <outlet property="tipPercentControl" destination="sCt-SG-gnG" id="762-yu-nvi"/>
+                        <outlet property="totalLabel" destination="NM3-PN-G2n" id="swf-1h-7Dk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
